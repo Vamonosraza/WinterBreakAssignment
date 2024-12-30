@@ -1,11 +1,14 @@
 import scrapy
 
+# create a class that inherits from scrapy.Spider
 class BestBuySpider(scrapy.Spider):
+    # spider and website identification
     name = 'bestbuy_spider'
     start_urls = [
         'https://www.bestbuy.com/site/searchpage.jsp?st=headphones'
     ]
 
+    # method to parse the response using css selectors
     def parse(self, response):
         for product in response.css('li.sku-item'):
             yield {
